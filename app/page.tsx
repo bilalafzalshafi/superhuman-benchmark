@@ -29,28 +29,54 @@ const games = [
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <section className="text-center py-16 bg-gray-50 rounded-lg mb-12">
-        <h1 className="text-4xl font-bold mb-4">Superhuman Benchmark</h1>
-        <p className="text-xl max-w-2xl mx-auto">
-          Measure your cognitive abilities with these hardcore challenges. 
-          Each game has been designed to test your limits and deceive you.
-          Can you overcome the tricks and prove your superhuman abilities?
-        </p>
+    <>
+      {/* Hero section */}
+      <section className="bg-blue-500 text-white">
+        <div className="container mx-auto px-4 py-20 text-center">
+          <div className="mb-8 flex justify-center">
+            <div className="text-white text-6xl">⚡</div>
+          </div>
+          <h1 className="text-6xl font-bold mb-6">Superhuman Benchmark</h1>
+          <p className="text-xl max-w-2xl mx-auto mb-10">
+            Measure your abilities with brain games and cognitive tests.
+            But beware - these games are designed to deceive you!
+          </p>
+          <Link 
+            href="/reaction-time" 
+            className="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-3 px-8 rounded-md transition-colors"
+          >
+            Get Started
+          </Link>
+        </div>
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {games.map((game) => (
-          <Link
-            key={game.id}
-            href={`/${game.id}`}
-            className={`${game.color} hover:opacity-90 transition-opacity rounded-lg p-6 text-white shadow-lg`}
-          >
-            <h2 className="text-2xl font-bold mb-2">{game.name}</h2>
-            <p>{game.description}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
+      {/* Games grid */}
+      <section className="bg-gray-100 py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {games.map((game) => (
+              <Link
+                key={game.id}
+                href={`/${game.id}`}
+                className="bg-white hover:shadow-md transition-shadow rounded-md overflow-hidden"
+              >
+                <div className="p-8 text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className={`${game.color} w-16 h-16 rounded-md flex items-center justify-center text-white text-2xl`}>
+                      {game.id === 'reaction-time' && '⚡'}
+                      {game.id === 'verbal-memory' && '📝'}
+                      {game.id === 'sequence-memory' && '🔢'}
+                      {game.id === 'typing' && '⌨️'}
+                    </div>
+                  </div>
+                  <h2 className="text-xl font-bold mb-2 text-gray-800">{game.name}</h2>
+                  <p className="text-gray-600 text-sm">{game.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

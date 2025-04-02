@@ -27,13 +27,18 @@ export default function ReactionTime({ onComplete }: ReactionTimeProps) {
   // Get current background color based on state
   const getBackgroundColor = () => {
     if (gameState === "waiting") return colors.normal;
-    if (gameState === "ready") return colors.ready;
-    if (gameState === "started") {
-      if (colorState === "normal") return colors.normal;
+    if (gameState === "ready") {
+      // While in ready state, we might show a bait color
       if (colorState === "bait") {
         // Randomly choose between two bait colors
-        return Math.random() > 0.5 ? colors.bait : colors.lightBait;
+        const baitColor = Math.random() > 0.5 ? colors.bait : colors.lightBait;
+        console.log(`Showing bait color: ${baitColor}`);
+        return baitColor;
       }
+      return colors.ready;
+    }
+    if (gameState === "started") {
+      // In started state, we show the actual green
       return colors.go;
     }
     if (gameState === "failed") return colors.failed;
@@ -54,40 +59,56 @@ export default function ReactionTime({ onComplete }: ReactionTimeProps) {
   // Start the game
   const startGame = useCallback(() => {
     setGameState("ready");
+    setColorState("normal");
     
     // Random delay between 1-6 seconds
     const delay = Math.floor(Math.random() * 5000) + 1000;
     
-    // Set up potential baits
-    const numberOfBaits = Math.floor(Math.random() * 3); // 0-2 baits
+    // Clear any existing timers to prevent issues
+    const timers: NodeJS.Timeout[] = [];
+    
+    // Force at least 1 bait for testing and better experience
+    const numberOfBaits = 1 + Math.floor(Math.random() * 2); // 1-2 baits
+    console.log(`Setting up ${numberOfBaits} bait colors before actual signal`);
     
     // Schedule each bait
     Array.from({ length: numberOfBaits }).forEach((_, index) => {
-      const baitDelay = Math.random() * delay * 0.8; // Baits happen before the real signal
+      // Make sure baits are spread throughout the waiting period
+      const baitDelayPercent = (index + 1) / (numberOfBaits + 1);
+      const baitDelay = Math.max(500, delay * baitDelayPercent * 0.8);
       
-      setTimeout(() => {
-        if (gameState !== "finished" && gameState !== "failed") {
-          setColorState("bait");
-          
-          // Reset back to normal state after a brief period
-          setTimeout(() => {
-            if (gameState !== "finished" && gameState !== "failed") {
-              setColorState("normal");
-            }
-          }, 300);
-        }
+      const baitTimer = setTimeout(() => {
+        // Only show bait if we're still in the ready state
+        console.log(`Showing bait color at ${baitDelay}ms`);
+        setColorState("bait");
+        
+        // Reset back to normal state after a brief period
+        const resetTimer = setTimeout(() => {
+          console.log("Resetting from bait color to red");
+          setColorState("normal");
+        }, 400);
+        
+        timers.push(resetTimer);
       }, baitDelay);
+      
+      timers.push(baitTimer);
     });
 
     // Schedule the actual signal
-    setTimeout(() => {
-      if (gameState === "ready") {
-        setGameState("started");
-        setColorState("go");
-        setStartTime(performance.now());
-      }
+    const goTimer = setTimeout(() => {
+      console.log("Showing actual green signal");
+      setGameState("started");
+      setColorState("go");
+      setStartTime(performance.now());
     }, delay);
-  }, [gameState]);
+    
+    timers.push(goTimer);
+    
+    // Cleanup function to clear all timers if component unmounts
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
+  }, []);
 
   // Handle click based on game state
   const handleClick = () => {
@@ -120,7 +141,7 @@ export default function ReactionTime({ onComplete }: ReactionTimeProps) {
 
   return (
     <div
-      className={`w-full max-w-md h-96 flex items-center justify-center cursor-pointer transition-colors duration-150 ${getBackgroundColor()}`}
+      className={`w-full h-80 flex items-center justify-center cursor-pointer transition-colors duration-150 ${getBackgroundColor()} rounded-lg shadow-md`}
       onClick={handleClick}
     >
       <div className="text-white text-2xl font-bold">{getText()}</div>

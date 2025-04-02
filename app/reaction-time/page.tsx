@@ -36,57 +36,81 @@ export default function ReactionTimePage() {
   };
 
   return (
-    <GameContainer
-      title="Reaction Time"
-      description="Test your reactions. Don't get baited by fake signals!"
-      instructions="When the red box turns green, click as quickly as you can. Be careful - it might turn a similar color to trick you!"
-      backgroundColor="bg-green-500"
-      textColor="text-white"
-    >
-      {gameCount < 5 ? (
-        <div className="w-full">
-          <div className="mb-4 text-center">
-            <p className="text-lg">
-              Try {5 - gameCount} more times to get your average
-            </p>
-            {scores.length > 0 && (
-              <p className="text-gray-600">Last: {scores[scores.length - 1]}ms</p>
-            )}
-          </div>
-          <ReactionTime onComplete={handleGameComplete} />
-        </div>
-      ) : (
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">Your Results</h2>
-          <div className="text-6xl font-bold mb-4">
-            {getAverageScore()}
-            <span className="text-xl ml-1">ms</span>
-          </div>
-          <p className="mb-6">Average reaction time</p>
-          
-          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-8">
-            <div className="bg-gray-100 p-4 rounded">
-              <p className="text-3xl font-bold">{bestScore}ms</p>
-              <p className="text-gray-600">Best time</p>
+    <div className="min-h-screen flex flex-col">
+      {/* Game header */}
+      <div className="bg-blue-500 text-white">
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h1 className="text-5xl font-bold mb-4">Reaction Time Test</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            When the red box turns green, click as quickly as you can.
+            <br />
+            Be careful - it might turn a similar color to trick you!
+          </p>
+          {gameCount < 5 && scores.length > 0 && (
+            <div className="mt-4 text-white text-opacity-90">
+              <p>Try {5 - gameCount} more times | Last: {scores[scores.length - 1]}ms</p>
             </div>
-            <div className="bg-gray-100 p-4 rounded">
-              <p className="text-3xl font-bold">{scores.length}</p>
-              <p className="text-gray-600">Attempts</p>
+          )}
+        </div>
+      </div>
+
+      {/* Game content */}
+      <div className="flex-grow bg-blue-500 flex items-center justify-center pb-16">
+        {gameCount < 5 ? (
+          <div className="w-full max-w-lg px-4">
+            <ReactionTime onComplete={handleGameComplete} />
+          </div>
+        ) : (
+          <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
+            <h2 className="text-2xl font-bold mb-6">Your Results</h2>
+            <div className="text-6xl font-bold mb-6 text-blue-600">
+              {getAverageScore()}
+              <span className="text-2xl ml-1 text-gray-500">ms</span>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-6 max-w-md mx-auto mb-8">
+              <div className="bg-gray-100 p-4 rounded">
+                <p className="text-3xl font-bold">{bestScore}ms</p>
+                <p className="text-gray-600">Best time</p>
+              </div>
+              <div className="bg-gray-100 p-4 rounded">
+                <p className="text-3xl font-bold">{scores.length}</p>
+                <p className="text-gray-600">Attempts</p>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => {
+                setScores([]);
+                setBestScore(null);
+                setGameCount(0);
+              }}
+              className="bg-blue-600 text-white py-3 px-8 rounded hover:bg-blue-700 transition-colors font-semibold"
+            >
+              Try Again
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* About section */}
+      <div className="bg-gray-100 py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold mb-4 text-gray-800">About the test</h3>
+              <p className="text-gray-600 mb-4">
+                This is a hardcore version of the standard reaction time test. 
+                It's designed to measure how quickly you can respond to a visual stimulus.
+              </p>
+              <p className="text-gray-600">
+                Unlike normal tests, this one will occasionally show "bait" colors to trick you
+                into clicking early. Can you resist the deception?
+              </p>
             </div>
           </div>
-          
-          <button
-            onClick={() => {
-              setScores([]);
-              setBestScore(null);
-              setGameCount(0);
-            }}
-            className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition-colors"
-          >
-            Try Again
-          </button>
         </div>
-      )}
-    </GameContainer>
+      </div>
+    </div>
   );
 }
