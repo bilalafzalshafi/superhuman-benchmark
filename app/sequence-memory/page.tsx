@@ -38,13 +38,13 @@ export default function SequenceMemoryPage() {
           <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
             {finalLevel !== null ? (
               <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-4">Game Over</h2>
+                <h2 className="text-3xl font-bold mb-4 text-gray-800">Game Over</h2>
                 <p className="text-6xl font-bold mb-4 text-blue-600">{finalLevel}</p>
                 <p className="text-gray-600 mb-8">level reached</p>
               </div>
             ) : (
               <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">How it works</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">How it works</h2>
                 <p className="mb-6 text-gray-700">
                   You'll be shown a sequence of squares that flash blue. Memorize the pattern,
                   then repeat it back by clicking the squares in the same order.

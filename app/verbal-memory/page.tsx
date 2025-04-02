@@ -38,13 +38,13 @@ export default function VerbalMemoryPage() {
           <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
             {finalScore !== null ? (
               <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-4">Game Over</h2>
+                <h2 className="text-3xl font-bold mb-4 text-gray-800">Game Over</h2>
                 <p className="text-6xl font-bold mb-4 text-purple-600">{finalScore}</p>
                 <p className="text-gray-600 mb-8">words remembered</p>
               </div>
             ) : (
               <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">How it works</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">How it works</h2>
                 <p className="mb-6 text-gray-700">
                   You'll be shown words one at a time. For each word, you need to 
                   decide if you've seen it before in this game.

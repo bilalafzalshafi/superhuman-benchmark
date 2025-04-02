@@ -213,12 +213,12 @@ export default function SequenceMemory({ onGameOver }: SequenceMemoryProps) {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="mb-8 text-center">
-        <div className="text-3xl font-bold mb-4">Level: {level}</div>
+        <div className="text-3xl font-bold mb-4 text-gray-800">Level: {level}</div>
         
         {isShowingSequence ? (
-          <p>Watch the sequence...</p>
+          <p className="text-gray-600">Watch the sequence...</p>
         ) : (
-          <p>Your turn - repeat the sequence</p>
+          <p className="text-gray-600">Your turn - repeat the sequence</p>
         )}
       </div>
       

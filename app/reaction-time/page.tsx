@@ -62,7 +62,7 @@ export default function ReactionTimePage() {
           </div>
         ) : (
           <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
-            <h2 className="text-2xl font-bold mb-6">Your Results</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Your Results</h2>
             <div className="text-6xl font-bold mb-6 text-blue-600">
               {getAverageScore()}
               <span className="text-2xl ml-1 text-gray-500">ms</span>
@@ -70,11 +70,11 @@ export default function ReactionTimePage() {
             
             <div className="grid grid-cols-2 gap-6 max-w-md mx-auto mb-8">
               <div className="bg-gray-100 p-4 rounded">
-                <p className="text-3xl font-bold">{bestScore}ms</p>
+                <p className="text-3xl font-bold text-gray-800">{bestScore}ms</p>
                 <p className="text-gray-600">Best time</p>
               </div>
               <div className="bg-gray-100 p-4 rounded">
-                <p className="text-3xl font-bold">{scores.length}</p>
+                <p className="text-3xl font-bold text-gray-800">{scores.length}</p>
                 <p className="text-gray-600">Attempts</p>
               </div>
             </div>

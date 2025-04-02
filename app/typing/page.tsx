@@ -37,7 +37,7 @@ export default function TypingPage() {
         {!isPlaying && !results ? (
           <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">How it works</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">How it works</h2>
               <p className="mb-6 text-gray-700">
                 Type the text displayed as quickly and accurately as possible.
               </p>
@@ -60,7 +60,7 @@ export default function TypingPage() {
           </div>
         ) : results ? (
           <div className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">Your Results</h2>
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">Your Results</h2>
             
             <div className="grid grid-cols-2 gap-8 max-w-md mx-auto mb-8">
               <div className="bg-gray-100 p-6 rounded-lg">
