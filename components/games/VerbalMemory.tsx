@@ -261,13 +261,6 @@ export default function VerbalMemory({ onGameOver }: VerbalMemoryProps) {
           <div className="text-gray-600">Lives</div>
         </div>
       </div>
-      
-      {/* Debug info - remove in production */}
-      <div className="mt-6 text-xs text-gray-400 text-center">
-        <p>Last action: {lastAction}</p>
-        <p>Unique words seen: {seenWords.size}</p>
-        <p>Current word status: {seenWords.has(currentWord) ? "SEEN" : "NEW"}</p>
-        
         {/* Detailed log - typically hidden in production */}
         {process.env.NODE_ENV === 'development' && (
           <details className="mt-2">
@@ -278,6 +271,5 @@ export default function VerbalMemory({ onGameOver }: VerbalMemoryProps) {
           </details>
         )}
       </div>
-    </div>
   );
 }
