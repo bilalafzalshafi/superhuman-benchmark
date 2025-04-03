@@ -2,6 +2,10 @@
 
 A more challenging version of Human Benchmark with deceptive gameplay elements. Test your cognitive abilities with hardcore twists on classic brain games.
 
+## Live Demo
+
+The project is deployed and accessible at: https://bilalafzalshafi.github.io/superhuman-benchmark/
+
 ## Overview
 
 Superhuman Benchmark is inspired by the popular Human Benchmark website but takes each game to the next level with intentionally deceptive mechanics that test your ability to adapt, focus, and overcome challenging distractions.
