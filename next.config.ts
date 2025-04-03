@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  // Only use basePath in production
+  basePath: process.env.NODE_ENV === 'production' ? '/superhuman-benchmark' : '',
+  // Disable image optimization since it requires a server
+  images: {
+    unoptimized: true,
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+module.exports = nextConfig
