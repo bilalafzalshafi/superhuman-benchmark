@@ -92,7 +92,7 @@ export default function Dashboard() {
                 <div className="p-5">
                   {bestScore ? (
                     <div>
-                      <p className="text-3xl font-bold">{bestScore.score}{bestScore.metric}</p>
+                      <p className="text-3xl font-bold text-gray-800">{bestScore.score}{bestScore.metric}</p>
                       <p className="text-gray-600 text-sm">
                         Best Score • {new Date(bestScore.date).toLocaleDateString()}
                       </p>
@@ -135,8 +135,8 @@ export default function Dashboard() {
                       .slice(0, 10)
                       .map((score, index) => (
                         <tr key={index} className="hover:bg-gray-50">
-                          <td className="px-5 py-4 font-medium">{score.game}</td>
-                          <td className="px-5 py-4">
+                          <td className="px-5 py-4 font-medium text-gray-800">{score.game}</td>
+                          <td className="px-5 py-4 text-gray-800">
                             {score.score}
                             {score.metric}
                           </td>
