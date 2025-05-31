@@ -10,7 +10,7 @@ const games = [
   {
     id: "verbal-memory",
     name: "Verbal Memory",
-    description: "Keep as manywords in short term memory as possible.",
+    description: "Keep as many words in short term memory as possible.",
     color: "bg-purple-500",
   },
   {
