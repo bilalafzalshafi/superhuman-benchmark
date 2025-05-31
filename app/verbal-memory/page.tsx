@@ -83,7 +83,7 @@ export default function VerbalMemoryPage() {
               </p>
               <p className="text-gray-600">
                 Our superhuman version adds a twist: words will be modified with added letters or
-                subtle misspellings to confuse you. Can you still recognize which words you've seen?
+                subtle misspellings to confuse you.
               </p>
             </div>
           </div>

@@ -44,7 +44,6 @@ export default function ReactionTimePage() {
           <p className="text-xl max-w-2xl mx-auto">
             When the red box turns green, click as quickly as you can.
             <br />
-            Be careful - it might turn a similar color to trick you!
           </p>
           {gameCount < 5 && scores.length > 0 && (
             <div className="mt-4 text-white text-opacity-90">
@@ -105,7 +104,7 @@ export default function ReactionTimePage() {
               </p>
               <p className="text-gray-600">
                 Unlike normal tests, this one will occasionally show "bait" colors to trick you
-                into clicking early. Can you resist the deception?
+                into clicking early.
               </p>
             </div>
           </div>

@@ -27,7 +27,6 @@ export default function TypingPage() {
           <p className="text-xl max-w-2xl mx-auto">
             How fast can you type when everything keeps changing?
             <br />
-            Only the most adaptable typists will excel!
           </p>
         </div>
       </div>
@@ -98,7 +97,7 @@ export default function TypingPage() {
               </p>
               <p className="text-gray-600">
                 Our superhuman version adds a twist: the text will dynamically change as you type,
-                forcing you to adapt on the fly. Can you keep your cool when the words keep shifting?
+                forcing you to adapt on the fly.
               </p>
             </div>
           </div>

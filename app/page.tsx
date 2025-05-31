@@ -4,25 +4,25 @@ const games = [
   {
     id: "reaction-time",
     name: "Reaction Time",
-    description: "Test your reactions. Don't get baited by fake signals!",
+    description: "Test your visual reflexes.",
     color: "bg-green-500",
   },
   {
     id: "verbal-memory",
     name: "Verbal Memory",
-    description: "Keep words in short term memory. Watch for tricky variations!",
+    description: "Keep as manywords in short term memory as possible.",
     color: "bg-purple-500",
   },
   {
     id: "sequence-memory",
     name: "Sequence Memory",
-    description: "Remember patterns that shift and change as you play!",
+    description: "Remember an increasingly long pattern of button presses.",
     color: "bg-blue-500",
   },
   {
     id: "typing",
     name: "Typing",
-    description: "How fast can you type when text keeps changing?",
+    description: "How many words per minute can you type?",
     color: "bg-orange-500",
   },
 ];
@@ -39,7 +39,6 @@ export default function Home() {
           <h1 className="text-6xl font-bold mb-6">Superhuman Benchmark</h1>
           <p className="text-xl max-w-2xl mx-auto mb-10">
             Measure your abilities with brain games and cognitive tests.
-            But beware - these games are designed to deceive you!
           </p>
           <Link 
             href="/reaction-time" 

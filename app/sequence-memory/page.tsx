@@ -25,9 +25,8 @@ export default function SequenceMemoryPage() {
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-5xl font-bold mb-4">Sequence Memory Test</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Remember an increasingly complex pattern of flashing squares.
+            Remember an increasingly complex pattern of flashing (and moving) squares.
             <br />
-            But beware - the squares won't stay still!
           </p>
         </div>
       </div>
@@ -81,11 +80,11 @@ export default function SequenceMemoryPage() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold mb-4 text-gray-800">About the test</h3>
               <p className="text-gray-600 mb-4">
-                This test measures your sequential memory span - how many items you can remember in order.
+                This test measures your sequential memory span.
               </p>
               <p className="text-gray-600">
                 Our superhuman version adds a twist: the squares will move positions while you're trying
-                to recall the sequence, and some will even temporarily disappear at higher levels!
+                to recall the sequence, and some will even temporarily disappear at higher levels.
               </p>
             </div>
           </div>
